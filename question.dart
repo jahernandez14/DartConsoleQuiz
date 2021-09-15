@@ -8,25 +8,37 @@ class Question {
 
   newQues() {
     var rng = new Random().nextInt(3);
-    this._aAns = questions[rng];
-    print(_aAns);
+    this._aAns = questions[rng][0];
+    this._ques = questions[rng][1];
+    this._choices = questions[rng][2];
   }
 
-  // printQuestion() {
-  //   print(ques);
-  //   var uAns = stdin.readLineSync();
+  void set userAns(uAns){
+    this.uAns = uAns;
+  }
 
-  //   if (uAns == aAns) {
-  //     print("Correct!");
-  //   } else {
-  //     print("Nope!");
-  //   }
-  // }
+  String get ques{
+    return this._ques;
+  }
+
+    String get aAns{
+    return this._aAns;
+  }
+
+  String get userAns{
+    return this.uAns;
+  }
+
+    List get choices{
+    return this._choices;
+  }
 
   var questions = [
+    [
     "True",
     "The sky is blue? (True or False)",
-    ["True", "False"],
+    ["True", "False"]
+    ],
     [
       "False",
       "The sky is green? (True or False)",
@@ -34,7 +46,7 @@ class Question {
     ],
     [
       "A",
-      "What color is the sky?",
+      "What color is the sky? (A, B, C, or D)",
       ["A)Blue", "B)Green", "C)Red", "D)Yellow"]
     ]
   ];
