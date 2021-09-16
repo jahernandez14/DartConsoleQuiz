@@ -1,53 +1,62 @@
-import 'dart:math';
-
 class Question {
   var uAns;
   var _aAns;
   var _ques;
   var _choices;
 
-  newQues() {
-    var rng = new Random().nextInt(3);
-    this._aAns = questions[rng][0];
-    this._ques = questions[rng][1];
-    this._choices = questions[rng][2];
+  Question(aAns, ques, choices) {
+    this._aAns = aAns;
+    this._ques = ques;
+    this._choices = choices;
+    uAns = "";
   }
 
-  void set userAns(uAns){
+  bool ansChecker() {
+    bool result = false;
+
+    if (uAns.substring(0, 1).toLowerCase() ==
+            _aAns.substring(0, 1).toLowerCase() ||
+        uAns.toLowerCase() == _aAns.toLowerCase()) {
+      result = true;
+    }
+
+    return result;
+  }
+
+  set userAns(uAns) {
     this.uAns = uAns;
   }
 
-  String get ques{
+  String get ques {
     return this._ques;
   }
 
-    String get aAns{
+  String get aAns {
     return this._aAns;
   }
 
-  String get userAns{
+  String get userAns {
     return this.uAns;
   }
 
-    List get choices{
+  List get choices {
     return this._choices;
   }
+}
 
-  var questions = [
-    [
-    "True",
-    "The sky is blue? (True or False)",
-    ["True", "False"]
-    ],
-    [
-      "False",
-      "The sky is green? (True or False)",
-      ["True", "False"]
-    ],
-    [
-      "A",
-      "What color is the sky? (A, B, C, or D)",
-      ["A)Blue", "B)Green", "C)Red", "D)Yellow"]
-    ]
-  ];
+class FillInQuestion extends Question {
+  FillInQuestion(aAns, ques, choices) : super(aAns, ques, choices) {
+    this._aAns = aAns;
+    this._ques = ques;
+    uAns = "";
+  }
+
+  @override
+  bool ansChecker() {
+    bool result = false;
+    if (uAns.toLowerCase() == _aAns.toLowerCase()) {
+      result = true;
+    }
+    return result;
+  }
 }
