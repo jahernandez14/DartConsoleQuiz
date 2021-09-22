@@ -10,4 +10,13 @@ void main() async {
 
   var decoded = json.decode(query);
 
+  var arr = decoded["quiz"]["question"];
+  var quiz = [];
+  var len = arr.length;
+
+  for (var j = 0; j < len; j++) {
+    quiz.add(arr[j]);
+  }
+
+  print(quiz[0]["stem"]);
 }

@@ -1,37 +1,32 @@
 import 'quiz.dart';
 import 'dart:io';
 
-main() {
-  print("Quiz");
+main() async {
   Quiz quiz = new Quiz();
-  quiz.buildQuiz();
+  await quiz.buildQuiz();
+
+  print("**********Quiz**********");
+
   var len = quiz.pool.length;
   var i = 0;
   while (i < len) {
-    print(quiz.pool[i].ques);
+    print("\nQuestion ${i + 1}: ${quiz.pool[i].ques}\n");
     var len = quiz.pool[i].choices.length;
     for (var j = 0; j < len; j++) {
-      print(quiz.pool[i].choices[j]);
+      print("${j + 1}) ${quiz.pool[i].choices[j]}");
     }
-
-    try{
-      quiz.pool[i].userAns = int.parse(stdin.readLineSync()!);
-    }
-    catch (u){
-    }
-
+    quiz.pool[i].userAns = stdin.readLineSync();
     var ans = quiz.pool[i].ansChecker();
-    if (ans == 1 ) {
+
+    if (ans == 1) {
       print("Correct!");
       i += 1;
-    } 
-    else if (ans == 0) {
+    } else if (ans == 0) {
       print("Nope!");
       print("You entered: ${quiz.pool[i].userAns}");
       print("The correct answer was: ${quiz.pool[i].aAns}");
       i += 1;
-    }
-    else{
+    } else {
       print("Invalid input try again!");
     }
   }
