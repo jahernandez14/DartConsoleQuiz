@@ -22,20 +22,9 @@ class Quiz {
 
   var questions = [
     [
-      "True",
-      "The sky is blue? (True or False)",
-      ["True", "False"]
-    ],
-    [
-      "False",
-      "The sky is green? (True or False)",
-      ["True", "False"]
-    ],
-    [
-      "A) Blue",
-      "What color is the sky? (A, B, C, or D)",
-      ["A)Blue", "B)Green", "C)Red", "D)Yellow"]
-    ],
-    ["Sky", "The _____ is blue."]
+      "1",
+      "What color is the sky? (1, 2, 3, or 4)",
+      ["1)Blue", "2)Green", "3)Red", "4)Yellow"]
+    ]
   ];
 }

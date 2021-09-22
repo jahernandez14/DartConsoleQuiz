@@ -6,3 +6,9 @@
 - Read, use, modify JSON files.
 - Connect to a server
 - Use the model view controller
+
+## Instructions
+- Have Flutter installed on Windows, Linux, or MacOS
+- Open terminal
+- Run flutter packages get
+- Run dart ui.dart

@@ -13,16 +13,26 @@ main() {
     for (var j = 0; j < len; j++) {
       print(quiz.pool[i].choices[j]);
     }
-    quiz.pool[i].userAns = stdin.readLineSync();
 
-    if (quiz.pool[i].ansChecker()) {
+    try{
+      quiz.pool[i].userAns = int.parse(stdin.readLineSync()!);
+    }
+    catch (u){
+    }
+
+    var ans = quiz.pool[i].ansChecker();
+    if (ans == 1 ) {
       print("Correct!");
-    } else {
+      i += 1;
+    } 
+    else if (ans == 0) {
       print("Nope!");
       print("You entered: ${quiz.pool[i].userAns}");
       print("The correct answer was: ${quiz.pool[i].aAns}");
+      i += 1;
     }
-    print("\n");
-    i += 1;
+    else{
+      print("Invalid input try again!");
+    }
   }
 }

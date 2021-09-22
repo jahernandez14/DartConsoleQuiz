@@ -11,16 +11,21 @@ class Question {
     uAns = "";
   }
 
-  bool ansChecker() {
-    bool result = false;
-
-    if (uAns.substring(0, 1).toLowerCase() ==
-            _aAns.substring(0, 1).toLowerCase() ||
-        uAns.toLowerCase() == _aAns.toLowerCase()) {
-      result = true;
+  int ansChecker() {
+    try{
+      if (uAns > 0 && uAns < _choices.length) {
+        if(uAns == int.parse(_aAns)){
+          return 1;
+        }
+        else{
+          return 0;
+        }
+      }
     }
-
-    return result;
+    catch(u){
+      return 3;
+    }
+    return 3;
   }
 
   set userAns(uAns) {
@@ -36,7 +41,7 @@ class Question {
   }
 
   String get userAns {
-    return this.uAns;
+    return this.uAns.toString();
   }
 
   List get choices {
@@ -51,12 +56,12 @@ class FillInQuestion extends Question {
     uAns = "";
   }
 
-  @override
-  bool ansChecker() {
-    bool result = false;
-    if (uAns.toLowerCase() == _aAns.toLowerCase()) {
-      result = true;
-    }
-    return result;
-  }
+  // @override
+  // bool ansChecker() {
+  //   bool result = false;
+  //   if (uAns.toLowerCase() == _aAns.toLowerCase()) {
+  //     result = true;
+  //   }
+  //   return result;
+  // }
 }
