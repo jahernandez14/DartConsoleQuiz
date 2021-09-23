@@ -1,20 +1,19 @@
 import 'quiz.dart';
 import 'dart:io';
+import 'questionPrint.dart';
 
 main() async {
-  Quiz quiz = new Quiz();
-  await quiz.buildQuiz();
-
   print("**********Quiz**********");
+  print("How many question would you like in the quiz?");
+  print("If an invalid input is detected 5 questions will be selected.");
+  Quiz quiz = new Quiz();
+  var numQuestions = stdin.readLineSync();
+  await quiz.buildQuiz(numQuestions);
 
-  var len = quiz.pool.length;
+  var len = quiz.numQuestions;
   var i = 0;
   while (i < len) {
-    print("\nQuestion ${i + 1}: ${quiz.pool[i].ques}\n");
-    var len = quiz.pool[i].choices.length;
-    for (var j = 0; j < len; j++) {
-      print("${j + 1}) ${quiz.pool[i].choices[j]}");
-    }
+    new QPrinter().printQ(quiz.pool[i], i + 1);
     quiz.pool[i].userAns = stdin.readLineSync();
     var ans = quiz.pool[i].ansChecker();
 

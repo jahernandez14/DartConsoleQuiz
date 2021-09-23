@@ -3,8 +3,10 @@ class Question {
   var _aAns;
   var _ques;
   var _choices;
+  var _type;
 
-  Question(aAns, ques, choices) {
+  Question(type, aAns, ques, choices) {
+    this._type = type;
     this._aAns = aAns;
     this._ques = ques;
     this._choices = choices;
@@ -12,8 +14,8 @@ class Question {
   }
 
   int ansChecker() {
-    var ans = int.parse(uAns);
     try {
+      var ans = int.parse(uAns);
       if (ans > 0 && ans < _choices.length + 1) {
         if (uAns == _aAns.toString()) {
           return 1;
@@ -46,10 +48,15 @@ class Question {
   List get choices {
     return this._choices;
   }
+
+  int get type {
+    return this._type;
+  }
 }
 
 class FillInQuestion extends Question {
-  FillInQuestion(aAns, ques, choices) : super(aAns, ques, choices) {
+  FillInQuestion(type, aAns, ques, choices) : super(type, aAns, ques, choices) {
+    this._type = type;
     this._aAns = aAns;
     this._ques = ques;
     uAns = "";
@@ -65,5 +72,10 @@ class FillInQuestion extends Question {
       }
     }
     return 0;
+  }
+
+  @override
+  List get choices {
+    return [""];
   }
 }
