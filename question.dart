@@ -14,6 +14,7 @@ class Question {
   }
 
   int ansChecker() {
+    print("Mult: U:$uAns A: $_aAns Type: $_type");
     try {
       var ans = int.parse(uAns);
       if (ans > 0 && ans < _choices.length + 1) {
@@ -64,9 +65,9 @@ class FillInQuestion extends Question {
 
   @override
   int ansChecker() {
+    print("Fill U:$uAns A: $_aAns Type: $_type");
     var len = _aAns.length;
     for (var j = 0; j < len; j++) {
-      print("U:$uAns A:${_aAns[j]}");
       if (uAns.toLowerCase() == _aAns[j].toLowerCase()) {
         return 1;
       }

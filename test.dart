@@ -18,5 +18,5 @@ void main() async {
     quiz.add(arr[j]);
   }
 
-  print(quiz[0]["stem"]);
+  print(quiz);
 }
