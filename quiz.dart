@@ -11,7 +11,6 @@ class Quiz {
     try {
       _numQuestions = int.parse(num);
     } catch (u) {
-      print("\nInvalid Quiz Length A Default Length of 5 Was Selected");
       _numQuestions = 5;
     }
 
@@ -36,10 +35,10 @@ class Quiz {
   }
 
   String overallGrade() {
-    var total;
+    var total = 0;
     for (var i = 0; i < this._numQuestions; i++) {
       if (_grade[i] == 1) {
-        total = 1;
+        total += 1;
       }
     }
     return "$total/$_numQuestions";
