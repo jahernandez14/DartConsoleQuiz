@@ -13,7 +13,7 @@ main() async {
 
   var len = quiz.numQuestions;
 
-  print("\n$len questions were selected!\n");
+  print("\n$len question(s) were selected!\n");
 
   var i = 0;
   var status = 1;
@@ -26,17 +26,20 @@ main() async {
 
     if (ans == 1) {
       quiz.updateGrade(i, 1);
-    }
-    if (ans == 0) {
+    } else if (ans == 0) {
       quiz.updateGrade(i, 0);
-      // print("Nope!");
-      // print("You entered: ${quiz.pool[i].userAns}");
-      // print("The correct answer was: ${quiz.pool[i].aAns}");
     } else {
-      print("Invalid input try again!");
+      print("Invalid answer choice!");
     }
 
-    print("\nAnswer Submitted\nPrevious [P], Next [N], Quit [Q]");
+    if (i == len - 1) {
+      print(
+          "\nThe end of the quiz has been reached.\nIf you press N you will start from the start of the quiz");
+      i = 0;
+    }
+
+    print(
+        "\nAnswer Submitted\nPrevious [P], Next [N], Quit [Q], Any other key repeat question");
 
     var response = "";
     response = stdin.readLineSync()!;
@@ -50,11 +53,17 @@ main() async {
     } else if (response.toLowerCase() == "n") {
       i += 1;
     }
-
-    if (i == len) {
-      i = 0;
-    }
   }
 
   print("\nScore: ${quiz.overallGrade()}");
+
+  print("\nWould you like to review? Yes/No");
+  var response = "";
+  response = stdin.readLineSync()!;
+
+  if (response.toLowerCase() == "yes") {
+    new QPrinter().review(quiz);
+  } else {
+    print("\nGoodbye!!!");
+  }
 }

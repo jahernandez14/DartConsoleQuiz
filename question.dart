@@ -17,7 +17,7 @@ class Question {
     try {
       var ans = int.parse(uAns);
       if (ans > 0 && ans < _choices.length + 1) {
-        if (uAns == _aAns.toString()) {
+        if (uAns.toString() == _aAns.toString()) {
           return 1;
         } else {
           return 0;
