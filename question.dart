@@ -1,3 +1,4 @@
+///Class that represents each question.
 class Question {
   var uAns;
   var _aAns;
@@ -5,6 +6,7 @@ class Question {
   var _choices;
   var _type;
 
+  ///question constructor
   Question(type, aAns, ques, choices) {
     this._type = type;
     this._aAns = aAns;
@@ -13,6 +15,7 @@ class Question {
     uAns = "";
   }
 
+  ///method to check it multiple answer question is correct or not.
   int ansChecker() {
     try {
       var ans = int.parse(uAns);
@@ -29,6 +32,7 @@ class Question {
     return 3;
   }
 
+  ///setter and getters used to popullate and retrieve question information.
   set userAns(uAns) {
     this.uAns = uAns;
   }
@@ -54,6 +58,7 @@ class Question {
   }
 }
 
+///child class of question that now handles fill in the blanck question
 class FillInQuestion extends Question {
   FillInQuestion(type, aAns, ques, choices) : super(type, aAns, ques, choices) {
     this._type = type;
@@ -62,6 +67,7 @@ class FillInQuestion extends Question {
     uAns = "";
   }
 
+  ///method used to check the answer of only fill in the blank questions
   @override
   int ansChecker() {
     var len = _aAns.length;
@@ -73,6 +79,7 @@ class FillInQuestion extends Question {
     return 0;
   }
 
+  ///getter overwritten to eliminate answer choices.
   @override
   List get choices {
     return [""];

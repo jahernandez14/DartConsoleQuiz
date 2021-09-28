@@ -1,6 +1,7 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+///Server class to establish a connection with the server, parse the json and return a future list of all of the questions.
 class Server {
   var _quiz = [];
 

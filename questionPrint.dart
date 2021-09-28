@@ -1,4 +1,6 @@
+///Class to print portion of the UI that are repeated.
 class QPrinter {
+  ///method used to print the question and answer choices.
   printQ(question, questionNum) {
     if (question.type == 1) {
       print("\nQuestion $questionNum: ${question.ques}\n");
@@ -12,6 +14,7 @@ class QPrinter {
     }
   }
 
+  ///method that print a review of the quiz indication what is right and wrong.
   review(quiz) {
     var len = quiz.pool.length;
 
